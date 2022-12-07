@@ -4,12 +4,21 @@ import android.app.Service
 import android.provider.ContactsContract
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ListView
+import android.widget.TextView
 import java.util.ArrayList
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import javax.security.auth.callback.Callback
 
 class MainActivity : AppCompatActivity() {
+
+    init {
+        System.loadLibrary("ndktest")
+    }
+    external fun helloWorld(): String
+
     private var listView: ListView? = null
     private var customAdapter: CustomAdapter? = null
     private var contactModelArrayList: ArrayList<ContactModel>? = null
@@ -18,6 +27,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Glide.with(this).load("https://i.kym-cdn.com/photos/images/original/000/181/190/tumblr_lsdptrZkpi1qh6cr0o4_r1_500.gif").into(findViewById(R.id.image))
+
+        var view: TextView = findViewById(R.id.text) as TextView
+        view.text = helloWorld()
 
         listView = findViewById(R.id.listView) as ListView
 
@@ -42,6 +56,10 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
+
+
 
 
 }
