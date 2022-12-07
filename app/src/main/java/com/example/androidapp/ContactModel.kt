@@ -1,24 +1,15 @@
 package com.example.androidapp
 
-class ContactModel {
+import com.google.gson.annotations.SerializedName
 
-    var name: String? = null
-    var number: String? = null
-
-    fun setNames(name: String) {
-        this.name = name
-    }
+data class ContactModel(
+    @SerializedName("name") var name: String?,
+    @SerializedName("number") var number: String?) {
 
     fun getNumbers(): String {
         return number.toString()
     }
-
-    fun setNumbers(number: String) {
-        this.number = number
-    }
-
     fun getNames(): String {
         return name.toString()
     }
-
 }

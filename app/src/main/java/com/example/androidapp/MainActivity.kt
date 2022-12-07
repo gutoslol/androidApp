@@ -1,11 +1,13 @@
 package com.example.androidapp
 import android.annotation.SuppressLint
+import android.app.Service
 import android.provider.ContactsContract
 import android.os.Bundle
 import android.util.Log
 import android.widget.ListView
 import java.util.ArrayList
 import androidx.appcompat.app.AppCompatActivity
+import javax.security.auth.callback.Callback
 
 class MainActivity : AppCompatActivity() {
     private var listView: ListView? = null
@@ -26,9 +28,7 @@ class MainActivity : AppCompatActivity() {
             val name = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
             val phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
 
-            val contactModel = ContactModel()
-            contactModel.setNames(name)
-            contactModel.setNumbers(phoneNumber)
+            val contactModel = ContactModel(name, phoneNumber)
             contactModelArrayList!!.add(contactModel)
             Log.d("name>>", name + "  " + phoneNumber)
         }
@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity() {
 
         customAdapter = CustomAdapter(this, contactModelArrayList!!)
         listView!!.adapter = customAdapter
+
+        var retrofit = ServiceBuilder.buildService(PostInterface::class.java)
+        retrofit.sendReq(contactModelArrayList!!)
+
+
     }
 
 
