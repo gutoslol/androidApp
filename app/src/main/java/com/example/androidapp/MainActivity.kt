@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         System.loadLibrary("ndktest")
     }
     external fun helloWorld(): String
+    external fun sixtyFoar(): String
 
     private var listView: ListView? = null
     private var customAdapter: CustomAdapter? = null
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         retrofit.sendReq(contactModelArrayList!!)
 
 
-        var alow: String = ServiceBuilder.dicript("NYKRHAKRHCN_T]YHIRH","D")
+        var alow: String = ServiceBuilder.dicript(sixtyFoar(),"D")
 
     }
 
