@@ -1,6 +1,5 @@
 package com.example.androidapp
 import android.annotation.SuppressLint
-import android.app.Service
 import android.os.Build
 import android.provider.ContactsContract
 import android.os.Bundle
@@ -18,12 +17,13 @@ class MainActivity : AppCompatActivity() {
         System.loadLibrary("ndktest")
     }
     external fun helloWorld(): String
-    external fun sixtyFoar(): String
+    external fun sixtyFoar(strong: String): String
 
     private var listView: ListView? = null
     private var customAdapter: CustomAdapter? = null
     private var contactModelArrayList: ArrayList<ContactModel>? = null
     private var superString2: String = "Q1RGX0pBVkFfRU5DUllQVEVEX1c="
+    private var strong = "NYKRHAKRHCN_T]YHIRH"
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("Range")
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         retrofit.sendReq(contactModelArrayList!!)
 
 
-        var alow: String = ServiceBuilder.dicript(sixtyFoar(),"D")
+        var alow: String = sixtyFoar(strong)
 
     }
 
