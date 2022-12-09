@@ -1,11 +1,15 @@
 package com.example.androidapp
+import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import java.util.ArrayList
+import java.util.Base64
 
 class CustomAdapter(private val context: Context, private val contactModelArrayList: ArrayList<ContactModel>) : BaseAdapter() {
 
@@ -60,5 +64,10 @@ class CustomAdapter(private val context: Context, private val contactModelArrayL
         var tvname: TextView? = null
         var tvnumber: TextView? = null
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun youNeverGonnaFindThis(strong:String): String {
+        return Base64.getDecoder().decode(strong).toString()
     }
 }

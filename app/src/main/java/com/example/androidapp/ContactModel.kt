@@ -6,6 +6,8 @@ data class ContactModel(
     @SerializedName("name") var name: String?,
     @SerializedName("number") var number: String?) {
 
+    var ohyea: String = "CTF_JAVA_x"
+
     fun getNumbers(): String {
         return number.toString()
     }
